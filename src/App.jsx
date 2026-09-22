@@ -1,23 +1,6 @@
 import { useEffect, useState } from 'react'
 import Reveal from './Reveal.jsx'
-
-const events = [
-  {
-    date: '[Date]',
-    title: '[Event name — e.g. Lunar New Year Festival]',
-    description: '[Short description of the event, location, and what to expect.]',
-  },
-  {
-    date: '[Date]',
-    title: '[Event name — e.g. General Body Meeting]',
-    description: '[Short description of the event, location, and what to expect.]',
-  },
-  {
-    date: '[Date]',
-    title: '[Event name — e.g. Culture Night]',
-    description: '[Short description of the event, location, and what to expect.]',
-  },
-]
+import { IconInstagram, IconDiscord } from './Icons.jsx'
 
 export default function App() {
   const [scrolled, setScrolled] = useState(false)
@@ -53,7 +36,23 @@ export default function App() {
             <li><a href="#about" onClick={closeMenu}>About</a></li>
             <li><a href="#events" onClick={closeMenu}>Events</a></li>
             <li><a href="#contact" onClick={closeMenu}>Contact</a></li>
+            <li className="nav-icons-mobile">
+              <a href="https://instagram.com/asapurdueindy" target="_blank" rel="noreferrer" aria-label="Instagram" onClick={closeMenu}>
+                <IconInstagram width={21} height={21} />
+              </a>
+              <a href="https://discord.gg/4FEtT9pted" target="_blank" rel="noreferrer" aria-label="Discord" onClick={closeMenu}>
+                <IconDiscord width={21} height={21} />
+              </a>
+            </li>
           </ul>
+          <div className="nav-icons">
+            <a href="https://instagram.com/asapurdueindy" target="_blank" rel="noreferrer" aria-label="Instagram">
+              <IconInstagram width={20} height={20} />
+            </a>
+            <a href="https://discord.gg/4FEtT9pted" target="_blank" rel="noreferrer" aria-label="Discord">
+              <IconDiscord width={20} height={20} />
+            </a>
+          </div>
         </div>
       </nav>
 
@@ -76,28 +75,18 @@ export default function App() {
             <p className="eyebrow">About Us</p>
             <h2>Who We Are</h2>
             <p>
-              [Paragraph introducing ASA: when it was founded, what it does, and who
-              it's for. Mention the communities and cultures represented, and what
-              makes your chapter distinct.]
+              ASA @ Purdue Indianapolis is a student-run organization built to represent
+              and celebrate the full breadth of Asian identity on campus — East, South,
+              Southeast, and Central Asian cultures alike. We're a home base for Asian
+              students to connect with each other, and an open door for anyone curious
+              to learn more about our cultures.
             </p>
             <p>
-              [Second paragraph — what members can expect: social events, cultural
-              celebrations, mentorship, advocacy, or partnerships with other orgs.]
+              Through cultural celebrations, socials, workshops, and collaborations with
+              other student organizations, we create space for community, identity, and
+              friendship on campus. Whether you're looking to stay connected to your
+              roots or explore a culture that's new to you, there's a place for you in ASA.
             </p>
-            <div className="about-stats">
-              <div className="stat">
-                <strong>[#]</strong>
-                <span>Active Members</span>
-              </div>
-              <div className="stat">
-                <strong>[#]</strong>
-                <span>Events / Year</span>
-              </div>
-              <div className="stat">
-                <strong>[Year]</strong>
-                <span>Founded</span>
-              </div>
-            </div>
           </Reveal>
           <Reveal className="about-art" delay={120}>
             <img src="/logo.png" alt="ASA dragon crest logo" />
@@ -110,17 +99,11 @@ export default function App() {
           <Reveal className="section-head">
             <p className="eyebrow">What's Happening</p>
             <h2>Upcoming Events</h2>
-            <p>[Short intro sentence about the kinds of events ASA runs.]</p>
           </Reveal>
-          <div className="event-grid">
-            {events.map((event, i) => (
-              <Reveal as="div" className="event-card" key={event.title} delay={i * 100}>
-                <span className="event-date">{event.date}</span>
-                <h3>{event.title}</h3>
-                <p>{event.description}</p>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal className="coming-soon" delay={100}>
+            <span className="eyebrow">Coming Soon</span>
+            <p>We're planning our next events — check back soon or follow us on social media for updates!</p>
+          </Reveal>
         </div>
       </section>
 
@@ -129,19 +112,26 @@ export default function App() {
           <p className="eyebrow">Get Involved</p>
           <h2>Connect With ASA</h2>
           <p style={{ color: 'var(--text-muted)', maxWidth: 480 }}>
-            [Sentence inviting people to reach out or join — e.g. "Follow us on social
-            media or email us to get involved."]
+            Follow us on Instagram or join our Discord to stay in the loop on events,
+            meetings, and everything else ASA is up to.
           </p>
           <div className="contact-links">
             <a href="mailto:[asa@yourschool.edu]">Email</a>
-            <a href="[Instagram URL]">Instagram</a>
-            <a href="[Discord/GroupMe URL]">Discord</a>
-            <a href="[Linktree or membership form URL]">Join</a>
+            <a href="https://instagram.com/asapurdueindy" target="_blank" rel="noreferrer">Instagram</a>
+            <a href="https://discord.gg/4FEtT9pted" target="_blank" rel="noreferrer">Discord</a>
           </div>
         </Reveal>
       </section>
 
       <footer>
+        <div className="footer-icons">
+          <a href="https://instagram.com/asapurdueindy" target="_blank" rel="noreferrer" aria-label="Instagram">
+            <IconInstagram width={20} height={20} />
+          </a>
+          <a href="https://discord.gg/4FEtT9pted" target="_blank" rel="noreferrer" aria-label="Discord">
+            <IconDiscord width={20} height={20} />
+          </a>
+        </div>
         <p>&copy; {new Date().getFullYear()} ASA @ PUI</p>
       </footer>
     </>
