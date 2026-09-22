@@ -1,4 +1,5 @@
-import HeroArt from './HeroArt.jsx'
+import { useEffect, useState } from 'react'
+import Reveal from './Reveal.jsx'
 
 const events = [
   {
@@ -19,33 +20,49 @@ const events = [
 ]
 
 export default function App() {
+  const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  const closeMenu = () => setMenuOpen(false)
+
   return (
     <>
-      <nav className="nav">
+      <nav className={`nav${scrolled ? ' nav-scrolled' : ''}`}>
         <div className="nav-inner">
-          <a className="nav-brand" href="#top">
+          <a className="nav-brand" href="#top" onClick={closeMenu}>
             <img src="/logo.png" alt="ASA dragon crest logo" />
           </a>
-          <ul className="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#events">Events</a></li>
-            <li><a href="#contact">Contact</a></li>
+          <button
+            className={`nav-toggle${menuOpen ? ' open' : ''}`}
+            aria-label="Toggle menu"
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+          <ul className={`nav-links${menuOpen ? ' nav-links-open' : ''}`}>
+            <li><a href="#about" onClick={closeMenu}>About</a></li>
+            <li><a href="#events" onClick={closeMenu}>Events</a></li>
+            <li><a href="#contact" onClick={closeMenu}>Contact</a></li>
           </ul>
         </div>
       </nav>
 
       <header id="top" className="hero">
-        <HeroArt />
         <div className="container">
-          <img className="hero-logo" src="/logo.png" alt="ASA dragon crest logo" />
           <h1>
-            ASA <span className="gold-text">@ PUI</span>
+            ASA <span className="gold-text">@ Purdue<br />Indianapolis</span>
           </h1>
-          <p className="hero-sub">
-            [One or two sentences on ASA's mission — building community, celebrating
-            Asian and Asian American culture, and creating a home on campus for
-            PUI students.]
-          </p>
+          <p className="hero-sub">Representing all Asians across campus!</p>
           <div className="hero-actions">
             <a className="btn btn-gold" href="#contact">Join ASA</a>
             <a className="btn btn-outline" href="#events">See Events</a>
@@ -55,7 +72,7 @@ export default function App() {
 
       <section id="about">
         <div className="container about-grid">
-          <div className="about-copy">
+          <Reveal className="about-copy">
             <p className="eyebrow">About Us</p>
             <h2>Who We Are</h2>
             <p>
@@ -81,34 +98,34 @@ export default function App() {
                 <span>Founded</span>
               </div>
             </div>
-          </div>
-          <div className="about-art">
+          </Reveal>
+          <Reveal className="about-art" delay={120}>
             <img src="/logo.png" alt="ASA dragon crest logo" />
-          </div>
+          </Reveal>
         </div>
       </section>
 
       <section id="events" className="events">
         <div className="container">
-          <div className="section-head">
+          <Reveal className="section-head">
             <p className="eyebrow">What's Happening</p>
             <h2>Upcoming Events</h2>
             <p>[Short intro sentence about the kinds of events ASA runs.]</p>
-          </div>
+          </Reveal>
           <div className="event-grid">
-            {events.map((event) => (
-              <div className="event-card" key={event.title}>
+            {events.map((event, i) => (
+              <Reveal as="div" className="event-card" key={event.title} delay={i * 100}>
                 <span className="event-date">{event.date}</span>
                 <h3>{event.title}</h3>
                 <p>{event.description}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       <section id="contact">
-        <div className="container contact-inner">
+        <Reveal className="container contact-inner">
           <p className="eyebrow">Get Involved</p>
           <h2>Connect With ASA</h2>
           <p style={{ color: 'var(--text-muted)', maxWidth: 480 }}>
@@ -121,7 +138,7 @@ export default function App() {
             <a href="[Discord/GroupMe URL]">Discord</a>
             <a href="[Linktree or membership form URL]">Join</a>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <footer>
