@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react'
 import Reveal from './Reveal.jsx'
-import { IconInstagram, IconDiscord } from './Icons.jsx'
+import { IconInstagram, IconDiscord, IconLinkedIn } from './Icons.jsx'
+
+const INSTAGRAM_URL = 'https://instagram.com/asapurdueindy'
+const DISCORD_URL = 'https://discord.gg/4FEtT9pted'
+const LINKEDIN_URL = 'https://www.linkedin.com/company/asapurdue'
 
 export default function App() {
   const [scrolled, setScrolled] = useState(false)
@@ -37,19 +41,25 @@ export default function App() {
             <li><a href="#events" onClick={closeMenu}>Events</a></li>
             <li><a href="#contact" onClick={closeMenu}>Contact</a></li>
             <li className="nav-icons-mobile">
-              <a href="https://instagram.com/asapurdueindy" target="_blank" rel="noreferrer" aria-label="Instagram" onClick={closeMenu}>
+              <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" aria-label="Instagram" onClick={closeMenu}>
                 <IconInstagram width={21} height={21} />
               </a>
-              <a href="https://discord.gg/4FEtT9pted" target="_blank" rel="noreferrer" aria-label="Discord" onClick={closeMenu}>
+              <a href={LINKEDIN_URL} target="_blank" rel="noreferrer" aria-label="LinkedIn" onClick={closeMenu}>
+                <IconLinkedIn width={21} height={21} />
+              </a>
+              <a href={DISCORD_URL} target="_blank" rel="noreferrer" aria-label="Discord" onClick={closeMenu}>
                 <IconDiscord width={21} height={21} />
               </a>
             </li>
           </ul>
           <div className="nav-icons">
-            <a href="https://instagram.com/asapurdueindy" target="_blank" rel="noreferrer" aria-label="Instagram">
+            <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" aria-label="Instagram">
               <IconInstagram width={20} height={20} />
             </a>
-            <a href="https://discord.gg/4FEtT9pted" target="_blank" rel="noreferrer" aria-label="Discord">
+            <a href={LINKEDIN_URL} target="_blank" rel="noreferrer" aria-label="LinkedIn">
+              <IconLinkedIn width={20} height={20} />
+            </a>
+            <a href={DISCORD_URL} target="_blank" rel="noreferrer" aria-label="Discord">
               <IconDiscord width={20} height={20} />
             </a>
           </div>
@@ -117,18 +127,22 @@ export default function App() {
           </p>
           <div className="contact-links">
             <a href="mailto:[asa@yourschool.edu]">Email</a>
-            <a href="https://instagram.com/asapurdueindy" target="_blank" rel="noreferrer">Instagram</a>
-            <a href="https://discord.gg/4FEtT9pted" target="_blank" rel="noreferrer">Discord</a>
+            <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer">Instagram</a>
+            <a href={LINKEDIN_URL} target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href={DISCORD_URL} target="_blank" rel="noreferrer">Discord</a>
           </div>
         </Reveal>
       </section>
 
       <footer>
         <div className="footer-icons">
-          <a href="https://instagram.com/asapurdueindy" target="_blank" rel="noreferrer" aria-label="Instagram">
+          <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" aria-label="Instagram">
             <IconInstagram width={20} height={20} />
           </a>
-          <a href="https://discord.gg/4FEtT9pted" target="_blank" rel="noreferrer" aria-label="Discord">
+          <a href={LINKEDIN_URL} target="_blank" rel="noreferrer" aria-label="LinkedIn">
+            <IconLinkedIn width={20} height={20} />
+          </a>
+          <a href={DISCORD_URL} target="_blank" rel="noreferrer" aria-label="Discord">
             <IconDiscord width={20} height={20} />
           </a>
         </div>
