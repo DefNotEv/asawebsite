@@ -1,3 +1,5 @@
+import HeroArt from './HeroArt.jsx'
+
 const events = [
   {
     date: '[Date]',
@@ -33,15 +35,16 @@ export default function App() {
       </nav>
 
       <header id="top" className="hero">
+        <HeroArt />
         <div className="container">
           <img className="hero-logo" src="/logo.png" alt="ASA dragon crest logo" />
           <h1>
-            Asian Student <span className="gold-text">Association</span>
+            ASA <span className="gold-text">@ PUI</span>
           </h1>
           <p className="hero-sub">
             [One or two sentences on ASA's mission — building community, celebrating
             Asian and Asian American culture, and creating a home on campus for
-            [Your School Name] students.]
+            PUI students.]
           </p>
           <div className="hero-actions">
             <a className="btn btn-gold" href="#contact">Join ASA</a>
@@ -122,7 +125,7 @@ export default function App() {
       </section>
 
       <footer>
-        <p>&copy; {new Date().getFullYear()} Asian Student Association &middot; [Your School Name]</p>
+        <p>&copy; {new Date().getFullYear()} ASA @ PUI</p>
       </footer>
     </>
   )
